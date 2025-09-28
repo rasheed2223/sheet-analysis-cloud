@@ -3,6 +3,7 @@ import * as XLSX from 'xlsx';
 import { FileUpload } from '@/components/FileUpload';
 import { DataTable } from '@/components/DataTable';
 import { Analytics } from '@/components/Analytics';
+import { ChatAnalysis } from '@/components/ChatAnalysis';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -128,9 +129,10 @@ const Index = () => {
 
             {/* Tabs for different views */}
             <Tabs defaultValue="preview" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
+              <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="preview">Data Preview</TabsTrigger>
                 <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                <TabsTrigger value="chat">Chat Analysis</TabsTrigger>
               </TabsList>
               
               <TabsContent value="preview" className="space-y-4">
@@ -139,6 +141,10 @@ const Index = () => {
               
               <TabsContent value="analytics" className="space-y-4">
                 <Analytics data={data} />
+              </TabsContent>
+              
+              <TabsContent value="chat" className="space-y-4">
+                <ChatAnalysis data={data} fileName={uploadedFile?.name || ''} />
               </TabsContent>
             </Tabs>
           </div>
